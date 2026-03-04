@@ -12,24 +12,26 @@ jobs:
 
       - name: Set up Python
         uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
 
       - name: Install uv
         run: pip install uv
 
       - name: Install dependencies
-        run: uv sync --no-dev
+        run: uv sync
 
       - name: Install ruff and mypy
-        run: pip install ruff mypy
+        run: uv pip install ruff mypy
 
       - name: Ruff format
-        run: ruff format --check
+        run: uv run ruff format --check
 
       - name: Ruff linter
-        run: ruff check .
+        run: uv run ruff check .
 
       - name: Mypy
-        run: mypy .
+        run: uv run mypy .
 
       - name: Unit tests
         run: uv run pytest /core/tests/unit
@@ -38,4 +40,4 @@ jobs:
         run: uv run pytest /core/tests/integration
 
       - name: BDD tests
-        run: uv run pytest /core/tests/bdd
+        run: uv run pytest /core/tests/behavior

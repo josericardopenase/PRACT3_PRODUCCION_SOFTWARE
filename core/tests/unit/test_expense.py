@@ -67,5 +67,5 @@ def test_future_date_raises_error():
             title="Gasto con fecha futura",
             amount=10,
             description="Almuerzo",
-            expense_date=date.today() + timedelta(days=1),
+            expense_date=date.today() + timedelta(days=1)
         )
