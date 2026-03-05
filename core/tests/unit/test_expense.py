@@ -40,7 +40,9 @@ def test_negative_amount_raises_error():
     - Revisar si esta restricción ya está implementada en la clase Expense.
     """
     with pytest.raises(InvalidAmountError):
-        Expense(id=1, title="Test", amount=-5, description="", expense_date=date.today())
+        Expense(
+            id=1, title="Test", amount=-5, description="", expense_date=date.today()
+        )
 
 
 def test_future_date_raises_error():
