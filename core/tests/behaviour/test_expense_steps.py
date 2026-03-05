@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, datetime
 import pytest
 from pytest_bdd import scenarios, given, when, then, parsers
 
@@ -29,9 +29,26 @@ def manager_with_one_expense(context, amount):
 
 @when(parsers.parse("añado un gasto de {amount:d} euros llamado {title}"))
 def add_expense(context, amount, title):
-    context["service"].create_expense(
-        title=title, amount=amount, description="", expense_date=date.today()
+    context["service"].create_expense(title=title, amount=amount, description="")
+
+
+@when(
+    parsers.parse(
+        "añado un gasto de {amount:d} euros llamado {title} en {expense_date}"
     )
+)
+def add_expense_on(context, amount, title, expense_date):
+    context["service"].create_expense(
+        title=title,
+        amount=amount,
+        description="",
+        expense_date=datetime.strptime(expense_date, "%d-%m-%Y").date(),
+    )
+
+
+@when(parsers.parse("modifico el gasto con id {expense_id:d} a {amount:d} euros"))
+def update_expense(context, expense_id, amount):
+    context["service"].update_expense(expense_id=expense_id, amount=amount)
 
 
 @when(parsers.parse("elimino el gasto con id {expense_id:d}"))
@@ -46,7 +63,7 @@ def check_total(context, total):
 
 @then(parsers.parse("{month_name} debe sumar {expected_total:d} euros"))
 def check_month_total(context, month_name, expected_total):
-    total_actual = context["totals"].get(month_name, 0)
+    total_actual = context["service"].get_month_total(month_name)
     assert total_actual == expected_total
 
 
