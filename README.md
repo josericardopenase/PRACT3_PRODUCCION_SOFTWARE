@@ -217,5 +217,3 @@ Por último, asegúrate de que la integración continua de GitHub Actions se eje
 ![Validación de Actions](caps/actions.png)
 ![Detalles de ejecución](caps/actions2.png)
 
-
-
