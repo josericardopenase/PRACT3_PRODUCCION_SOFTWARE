@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from datetime import date
 
 from core.domain_error import (
+    EmptyTitleError,
     InvalidAmountError,
     InvalidExpenseDateError,
 )
@@ -19,6 +20,8 @@ class Expense:
         """
         FIXME: Revisen si falta algo que comprobar...
         """
+        if self.title == "":
+            raise EmptyTitleError("El título no puede estar vacío")
 
         if self.amount <= 0:
             raise InvalidAmountError("El importe debe ser mayor que 0")
