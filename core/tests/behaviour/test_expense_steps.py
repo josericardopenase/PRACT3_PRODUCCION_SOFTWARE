@@ -48,3 +48,5 @@ def check_total(context, total):
 def check_expenses_length(context, expenses):
     total = len(context["db"]._expenses)
     assert expenses == total
+
+    
