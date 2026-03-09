@@ -26,7 +26,47 @@ Feature: Gestión de gastos
     Then el total de dinero gastado debe ser 15 euros
 
   Scenario: Crear tres gastos diferentes que sumen 30 euros hace que el total sean 30 euros
+    Given un gestor de gastos vacío
+    When añado un gasto de 5 euros llamado Bolígrafo
+    And añado un gasto de 10 euros llamado Libreta
+    And añado un gasto de 15 euros llamado Libro
+    Then el total de dinero gastado debe ser 30 euros
 
   Scenario: Crear tres gastos de 10, 30, 30 euros y elimino el ultimo gasto la suma son 40 euros
+    Given un gestor de gastos vacío
+    When añado un gasto de 10 euros llamado Pizarra
+    And añado un gasto de 30 euros llamado Mesa
+    And añado un gasto de 30 euros llamado Silla
+    And elimino el gasto con id 3
+    Then el total de dinero gastado debe ser 40 euros
+
 
   Scenario: Crear tres gastos de 10, 30, 30 euros y elimino el ultimo gasto la suma son 40 euros
+    Given un gestor de gastos vacío
+    When añado un gasto de 10 euros llamado Pizarra
+    And añado un gasto de 30 euros llamado Mesa
+    And añado un gasto de 30 euros llamado Silla
+    And elimino el gasto con id 3
+    Then el total de dinero gastado debe ser 40 euros
+
+  Scenario: Crear tres gastos, eliminar dos de ellos y comprobar que el total es el del gasto restante
+    Given un gestor de gastos vacío
+    When añado un gasto de 20 euros llamado Mochila
+    And añado un gasto de 10 euros llamado Estuche
+    And añado un gasto de 5 euros llamado Goma
+    And elimino el gasto con id 1
+    And elimino el gasto con id 2
+    Then el total de dinero gastado debe ser 5 euros
+
+  Scenario: Crear dos gastos con el mismo nombre y comprobar que el total que llevo gastado es la suma de ambos
+    Given un gestor de gastos vacío
+    When añado un gasto de 15 euros llamado Camiseta
+    And añado un gasto de 15 euros llamado Camiseta
+    Then el total de dinero gastado debe ser 30 euros
+
+  Scenario: Crear un gasto, eliminarlo, crear otro diferente y comprobar el total que llevo gastado
+    Given un gestor de gastos vacío
+    When añado un gasto de 50 euros llamado Playeras
+    And elimino el gasto con id 1
+    And añado un gasto de 20 euros llamado Pantalón
+    Then el total de dinero gastado debe ser 20 euros
