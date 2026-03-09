@@ -67,3 +67,4 @@ Feature: Gestión de gastos
     And añado un gasto de 5 euros llamado Palomitas en 16-01-2026
     Then march debe sumar 0 euros
 
+
