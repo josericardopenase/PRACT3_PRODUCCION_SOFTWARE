@@ -6,11 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ac49fc79-fae8-41a2-b0ef-9613331f03db" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/expense.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/expense.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/expense_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/expense_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/in_memory_expense_repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/in_memory_expense_repository.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/tests/unit/test_expense.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/tests/unit/test_expense.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/tests/unit/test_expense_repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/tests/unit/test_expense_repository.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/tests/behaviour/expense_management.feature" beforeDir="false" afterPath="$PROJECT_DIR$/core/tests/behaviour/expense_management.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/tests/behaviour/test_expense_steps.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/tests/behaviour/test_expense_steps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/tests/integration/test_expense_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/tests/integration/test_expense_service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/expenses.db" beforeDir="false" afterPath="$PROJECT_DIR$/expenses.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -85,7 +83,7 @@
       <option name="presentableId" value="Default" />
       <updated>1772567627789</updated>
       <workItem from="1772567646748" duration="3140000" />
-      <workItem from="1773071673403" duration="2091000" />
+      <workItem from="1773071673403" duration="8885000" />
     </task>
     <servers />
   </component>
