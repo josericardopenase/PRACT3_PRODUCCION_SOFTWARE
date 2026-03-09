@@ -57,13 +57,8 @@ def test_get_by_id_returns_expense():
     assert expense.id == 1 and expense.title == "Test" and expense.amount == 10
 
 
-
-
 def test_get_by_id_returns_none_if_not_found():
     repo = InMemoryExpenseRepository()
     repo.save(create_expense())
     expense = repo.get_by_id(7)
     assert expense is None
-
-
-

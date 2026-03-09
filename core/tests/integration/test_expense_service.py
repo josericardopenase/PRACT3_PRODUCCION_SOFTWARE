@@ -2,8 +2,6 @@ from datetime import date
 
 from core.expense_service import ExpenseService
 from core.no_tocar.sqlite_expense_repository import SQLiteExpenseRepository
-from core.tests.behaviour.test_expense_steps import remove_expense
-
 
 def create_service():
     repo = SQLiteExpenseRepository()
@@ -106,6 +104,7 @@ def test_update_expense_partial_fields():
     assert service.list_expenses()[0].amount == 18
     assert service.list_expenses()[0].title == "Camiseta"
     assert service.list_expenses()[0].description == "Ropa"
+
 
 def test_total_amount_after_removal():
     service = create_service()

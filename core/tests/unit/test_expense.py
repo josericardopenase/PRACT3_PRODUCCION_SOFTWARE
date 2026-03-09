@@ -3,7 +3,9 @@ from datetime import date, timedelta
 
 from core.expense import Expense
 from core.domain_error import (
-    EmptyTitleError, InvalidAmountError, InvalidExpenseDateError,
+    EmptyTitleError,
+    InvalidAmountError,
+    InvalidExpenseDateError,
 )
 
 
@@ -27,10 +29,21 @@ def test_empty_title_raises_error():
 
 def test_negative_amount_raises_error():
     with pytest.raises(InvalidAmountError):
-        Expense(id=1, title="titulo", amount=-4, description="Descripción", expense_date=date.today())
-
+        Expense(
+            id=1,
+            title="titulo",
+            amount=-4,
+            description="Descripción",
+            expense_date=date.today(),
+        )
 
 
 def test_future_date_raises_error():
     with pytest.raises(InvalidExpenseDateError):
-        Expense(id=1, title="titulo", amount=300, description="Descripción", expense_date=(date.today() + timedelta(days=5)))
+        Expense(
+            id=1,
+            title="titulo",
+            amount=300,
+            description="Descripción",
+            expense_date=(date.today() + timedelta(days=5)),
+        )
