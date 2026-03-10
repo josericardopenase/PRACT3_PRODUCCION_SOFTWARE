@@ -3,7 +3,8 @@ from datetime import date
 
 from core.domain_error import (
     InvalidAmountError,
-    InvalidExpenseDateError, EmptyTitleError,
+    InvalidExpenseDateError,
+    EmptyTitleError,
 )
 
 
@@ -20,7 +21,9 @@ class Expense:
             raise InvalidAmountError("El importe debe ser mayor que 0")
 
         if self.expense_date > date.today():
-            raise InvalidExpenseDateError("La fecha del gasto no puede ser posterior a hoy")
+            raise InvalidExpenseDateError(
+                "La fecha del gasto no puede ser posterior a hoy"
+            )
 
         if len(self.title) == 0:
             raise EmptyTitleError("El título no puede estar vacío.")
