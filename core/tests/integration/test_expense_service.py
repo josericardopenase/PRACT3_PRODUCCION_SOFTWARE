@@ -1,7 +1,6 @@
 from datetime import date
 
 from core.expense_service import ExpenseService
-from core.in_memory_expense_repository import InMemoryExpenseRepository
 from core.no_tocar.sqlite_expense_repository import SQLiteExpenseRepository
 
 
@@ -138,7 +137,12 @@ def test_update_expense_partial_fields():
     service.update_expense(service.list_expenses()[0].id, amount=18)
     updated_expense = service.list_expenses()[0]
 
-    assert updated_expense.title == "Camiseta" and updated_expense.amount == 18 and updated_expense.description == "Ropa"
+    assert (
+        updated_expense.title == "Camiseta"
+        and updated_expense.amount == 18
+        and updated_expense.description == "Ropa"
+    )
+
 
 def test_total_amount_after_removal():
     """
