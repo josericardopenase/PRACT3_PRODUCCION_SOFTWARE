@@ -65,8 +65,8 @@ Feature: Gestión de gastos
 
   Scenario: Crear gastos en meses diferentes y comprobar el total de un mes pasado
     Given un gestor de gastos vacío
-    When añado un gasto de 34 euros llamado Lámpara a fecha 2024-05-12
+    When añado un gasto de 36 euros llamado Lámpara a fecha 2024-05-12
     And añado un gasto de 64 euros llamado Silla a fecha 2024-05-04
     And añado un gasto de 19 euros llamado Jarrón a fecha 2026-03-02
     And añado un gasto de 57 euros llamado Escultura a fecha 2026-03-08
-    Then 2024-05 debe sumar 98 euros
+    Then 2024-05 debe sumar 100 euros
