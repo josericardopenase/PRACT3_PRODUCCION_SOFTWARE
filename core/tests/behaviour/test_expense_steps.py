@@ -1,3 +1,4 @@
+import datetime
 from datetime import date
 import pytest
 from pytest_bdd import scenarios, given, when, then, parsers
@@ -34,14 +35,37 @@ def add_expense(context, amount, title):
     )
 
 
+@when(
+    parsers.parse("añado un gasto de {amount:d} euros llamado {title} a fecha {date}")
+)
+def add_expense_with_date(context, amount, title, date):
+    context["service"].create_expense(
+        title=title,
+        amount=amount,
+        description="",
+        expense_date=datetime.datetime.strptime(date, "%Y-%m-%d").date(),
+    )
+
+
 @when(parsers.parse("elimino el gasto con id {expense_id:d}"))
 def remove_expense(context, expense_id):
     context["service"].remove_expense(expense_id)
 
 
+@when(parsers.parse("modifico el gasto con id {expense_id:d} a {amount:d} euros"))
+def update_expense(context, expense_id, amount):
+    context["service"].update_expense(expense_id, amount=amount)
+
+
 @then(parsers.parse("el total de dinero gastado debe ser {total:d} euros"))
 def check_total(context, total):
     assert context["service"].total_amount() == total
+
+
+@then(parsers.parse("{month_name} debe sumar {expected_total:d} euros"))
+def check_month_total(context, month_name, expected_total):
+    total_actual = context["service"].total_by_month().get(month_name, 0)
+    assert total_actual == expected_total
 
 
 @then(parsers.parse("debe haber {expenses:d} gastos registrados"))
