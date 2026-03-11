@@ -119,7 +119,6 @@ def test_remove_expense_reduces_total():
     remaining_expenses = service.list_expenses()
     assert len(remaining_expenses) == 1
     assert remaining_expenses[0].title == "Revista"
-    
 
 
 def test_update_expense_partial_fields():
