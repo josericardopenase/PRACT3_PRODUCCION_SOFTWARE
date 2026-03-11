@@ -30,7 +30,7 @@ Feature: Gestión de gastos
     When añado un gasto de 10 euros llamado Café
     And añado un gasto de 10 euros llamado Comida
     And añado un gasto de 10 euros llamado Transporte
-    Then el ttoal de dinero gastado debe ser 30€
+    Then el total de dinero gastado debe ser 30€
 
   Scenario: Crear tres gastos de 10, 30, 30 euros y elimino el ultimo gasto la suma son 40 euros
     Given un gestor de gastos vacío
