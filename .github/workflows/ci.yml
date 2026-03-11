@@ -34,10 +34,10 @@ jobs:
         run: uv run mypy .
 
       - name: Unit tests
-        run: uv run pytest ../core/tests/unit
+        run: uv run pytest core/tests/unit
 
       - name: Integration tests
-        run: uv run pytest ../core/tests/integration
+        run: uv run pytest core/tests/integration
 
       - name: BDD tests
-        run: uv run pytest ../core/tests/behavior
+        run: uv run pytest core/tests/behavior
