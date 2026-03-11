@@ -5,7 +5,8 @@ from core.domain_error import (
     EmptyTitleError,
     InvalidAmountError,
     InvalidExpenseDateError,
-    InvalidIdError
+    InvalidIdError,
+    InvalidDescriptionError
 )
 
 
@@ -34,3 +35,6 @@ class Expense:
             raise InvalidExpenseDateError(
                 "La fecha del gasto no puede ser posterior a hoy"
             )
+        
+        if len(self.description) > 100:
+            raise InvalidDescriptionError("La descripción no puede tener más de 100 caracteres")
