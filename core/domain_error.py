@@ -14,3 +14,6 @@ class InvalidAmountError(DomainError):
 
 class InvalidExpenseDateError(DomainError):
     pass
+
+class InvalidIdError(DomainError):
+    pass
