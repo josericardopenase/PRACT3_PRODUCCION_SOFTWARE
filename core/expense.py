@@ -29,6 +29,4 @@ class Expense:
                 "La fecha del gasto no puede ser posterior a hoy"
             )
         if len(self.title.strip()) == 0:
-            raise EmptyTitleError(
-                "El título está vacio"
-            )
+            raise EmptyTitleError("El título está vacio")

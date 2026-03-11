@@ -57,14 +57,10 @@ def test_get_by_id_returns_expense():
     repo.save(create_expense(3, "setensó", 34))
     assert repo.get_by_id(2) == create_expense(2, "setensa", 20)
 
-    
 
-
-def test_get_by_id_returns_none_if_not_found():    
+def test_get_by_id_returns_none_if_not_found():
     repo = InMemoryExpenseRepository()
     repo.save(create_expense())
     repo.save(create_expense(2, "setensa", 20))
     repo.save(create_expense(3, "setensó", 34))
     assert repo.get_by_id(9) == None
-
-    

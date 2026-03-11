@@ -5,12 +5,12 @@ from core.expense import Expense
 from core.domain_error import (
     EmptyTitleError,
     InvalidAmountError,
-    InvalidExpenseDateError
+    InvalidExpenseDateError,
 )
 
 
 def test_create_valid_expense():
-  
+
     expense = Expense(
         id=1,
         title="Comida",
@@ -20,7 +20,7 @@ def test_create_valid_expense():
     )
 
     assert expense.title == "Comida"
-    assert expense.amount == 10.5 
+    assert expense.amount == 10.5
 
 
 def test_empty_title_raises_error():
@@ -30,8 +30,17 @@ def test_empty_title_raises_error():
 
 def test_negative_amount_raises_error():
     with pytest.raises(InvalidAmountError):
-        Expense(id=1, title="wdasdw", amount=-10, description="", expense_date=date.today())
+        Expense(
+            id=1, title="wdasdw", amount=-10, description="", expense_date=date.today()
+        )
+
 
 def test_future_date_raises_error():
     with pytest.raises(InvalidExpenseDateError):
-        Expense(id=1, title="wdasdw", amount=10, description="", expense_date=date.today() + timedelta(days=1))
+        Expense(
+            id=1,
+            title="wdasdw",
+            amount=10,
+            description="",
+            expense_date=date.today() + timedelta(days=1),
+        )

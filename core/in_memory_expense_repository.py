@@ -27,7 +27,6 @@ class InMemoryExpenseRepository(ExpenseRepository):
                 self._expenses.remove(expense)
                 return None
 
-
     def get_by_id(self, expense_id: int) -> Expense | None:
         return next(
             (expense for expense in self._expenses if expense.id == expense_id), None

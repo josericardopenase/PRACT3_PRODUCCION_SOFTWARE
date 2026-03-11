@@ -92,13 +92,18 @@ def test_create_multiple_expenses_and_list():
     service = create_service()
     service.create_expense("pan", 3, "Mercado", date(2025, 1, 10))
     service.create_expense("leche", 4, "Supemercado", date(2025, 1, 20))
-    assert(len(service.list_expenses()) == 2)
+    assert len(service.list_expenses()) == 2
     pan = service.list_expenses()[0]
-    assert( pan.title == "pan"and pan.amount == 3 and pan.description =="Mercado" and pan.expense_date == date(2025, 1, 10))
-    leche = (service.list_expenses()[1])
+    assert (
+        pan.title == "pan"
+        and pan.amount == 3
+        and pan.description == "Mercado"
+        and pan.expense_date == date(2025, 1, 10)
+    )
+    leche = service.list_expenses()[1]
     leche_data = (leche.title, leche.amount, leche.description, leche.expense_date)
-    assert (leche_data == ("leche", 4, "Supemercado", date(2025, 1, 20)))
-    
+    assert leche_data == ("leche", 4, "Supemercado", date(2025, 1, 20))
+
 
 def test_remove_expense_reduces_total():
     """
@@ -117,8 +122,18 @@ def test_remove_expense_reduces_total():
     service.create_expense("Revista", 4, "", date(2025, 1, 20))
     service.remove_expense(service.list_expenses()[0].id)
     revista = service.list_expenses()[0]
-    revista_data = ( revista.title, revista.amount, revista.description, revista.expense_date)
-    assert(len((service.list_expenses())) and revista_data == ("Revista", 4, "", date(2025, 1, 20)))
+    revista_data = (
+        revista.title,
+        revista.amount,
+        revista.description,
+        revista.expense_date,
+    )
+    assert len((service.list_expenses())) and revista_data == (
+        "Revista",
+        4,
+        "",
+        date(2025, 1, 20),
+    )
 
 
 def test_update_expense_partial_fields():
@@ -137,7 +152,11 @@ def test_update_expense_partial_fields():
     service.create_expense("Camiseta", 15, "Ropa", date(2025, 1, 10))
     service.update_expense(service.list_expenses()[0].id, amount=18)
     camiseta = service.list_expenses()[0]
-    assert(camiseta.title == "Camiseta" and camiseta.amount == 18 and camiseta.description == "Ropa" )
+    assert (
+        camiseta.title == "Camiseta"
+        and camiseta.amount == 18
+        and camiseta.description == "Ropa"
+    )
 
 
 def test_total_amount_after_removal():
@@ -153,9 +172,6 @@ def test_total_amount_after_removal():
     service = create_service()
     service.create_expense("Cursos", 30, "", date(2025, 1, 10))
     service.create_expense("Internet", 25, "", date(2025, 1, 20))
-    assert(service.total_amount() == 55)
+    assert service.total_amount() == 55
     service.remove_expense(1)
-    assert(service.total_amount() == 25)
-    
-    
-    
+    assert service.total_amount() == 25
