@@ -15,8 +15,10 @@ class InvalidAmountError(DomainError):
 class InvalidExpenseDateError(DomainError):
     pass
 
+
 class InvalidIdError(DomainError):
     pass
+
 
 class InvalidDescriptionError(DomainError):
     pass
