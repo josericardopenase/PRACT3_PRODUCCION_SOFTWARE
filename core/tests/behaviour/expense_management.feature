@@ -32,13 +32,13 @@ Feature: Gestión de gastos
     And añado un gasto de 10 euros llamado Suscripciones
     Then el total de dinero gastado debe ser 30 euros
 
-  Scenario: Crear tres gastos de 10, 30, 30 euros y elimino el ultimo gasto la suma son 40 euros
+  Scenario: Crear tres gastos de 10, 30, 30 euros y elimino el primer gasto la suma son 60 euros
     Given un gestor de gastos vacío
     When añado un gasto de 10 euros llamado Comida
     And añado un gasto de 30 euros llamado Gasolina
     And añado un gasto de 30 euros llamado Suscripciones
-    And elimino un gasto de 30 euros llamado Suscripciones
-    Then el total de dinero gastado debe ser 40 euros
+    And elimino un gasto de 10 euros llamado Comida
+    Then el total de dinero gastado debe ser 60 euros
 
   Scenario: Crear tres gastos de 10, 30, 30 euros y elimino el ultimo gasto la suma son 40 euros
     Given un gestor de gastos vacío

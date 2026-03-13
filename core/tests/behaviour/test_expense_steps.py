@@ -39,6 +39,14 @@ def remove_expense(context, expense_id):
     context["service"].remove_expense(expense_id)
 
 
+@when(parsers.parse("elimino un gasto de {amount:d} euros llamado {title}"))
+def remove_expense_with_title(context, title):
+    for expense in context["service"].list_expenses():
+        if expense.title == title:
+            context["service"].remove_expense(expense.id)
+            break
+
+
 @when(parsers.parse("actualizo el gasto con id {expense_id:d} a {amount:d} euros"))
 def update_amount_expense(context, expense_id, amount):
     context["service"].update_expense(expense_id=expense_id, amount=amount)
