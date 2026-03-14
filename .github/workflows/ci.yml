@@ -11,21 +11,33 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
 
       - name: Install uv
+        run: curl -LsSf https://astral.sh/uv/install.sh | bash
 
       - name: Install dependencies
+        run: uv sync
 
       - name: Install ruff and mypy
+        run: uv add ruff mypy
 
       - name: Ruff format
+        run: uv run ruff format --check .
 
       - name: Ruff linter
+        run: uv run ruff check .
 
       - name: Mypy
+        run: uv run mypy .
 
       - name: Unit tests
+        run: uv run pytest core/tests/unit
 
       - name: Integration tests
+        run: uv run pytest core/tests/integration
 
       - name: BDD tests
+        run: uv run pytest core/tests/bdd

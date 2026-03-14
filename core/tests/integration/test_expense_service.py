@@ -146,6 +146,7 @@ def test_update_expense_partial_fields():
     assert expense.amount == 18
     assert expense.description == "Ropa"
 
+
 def test_total_amount_after_removal():
     """
     Verifica que el cálculo del total gastado se actualiza correctamente después de eliminar un gasto.

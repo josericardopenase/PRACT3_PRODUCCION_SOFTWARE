@@ -31,7 +31,6 @@ def manager_with_one_expense(context, amount):
 def add_expense(context, amount, title):
     context["service"].create_expense(
         title=title, amount=amount, description="", expense_date=date.today()
-
     )
 
 
