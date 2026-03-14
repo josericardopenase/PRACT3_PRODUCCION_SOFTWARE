@@ -1,8 +1,15 @@
+# En la segunda parte tendréis que crear integración continua (CI) para el repositorio:
+# Crea dentro de la carpeta .github/workflows un workflow que se llame ci.yml y asegúrate de que ejecuta todos los pasos mencionados arriba (instalación de dependencias, lint, format, mypy, y todos los tests).
+# De esta manera, cada vez que se haga un push al repositorio, se validará automáticamente el código.
+# Consulta el fichero de ejemplo que tienes ya en .github/workflows/ci.yml si lo necesitas. Esta planteado el flujo que vamos a implementar.
+# Es fundamental que, una vez configurado el workflow hagáis push y verifiquéis en la pestaña "Actions" de GitHub que el flujo de integración continua se ejecuta correctamente y todos los pasos finalizan con éxito. Yo mismo revisaré esta sección para evaluar que la automatización funciona como se espera.
+
 name: CI
 
 on:
   push:
-    branches: ["**"]
+    branches: ["main"]
+  workflow_dispatch:
 
 jobs:
   lint-and-test:
