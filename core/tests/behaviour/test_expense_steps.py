@@ -44,7 +44,51 @@ def check_total(context, total):
     assert context["service"].total_amount() == total
 
 
+@then(
+    parsers.parse(
+        "el mes {month_YYYY_MM} debe tener un total de dinero gastado de {expected_total:d} euros"
+    )
+)
+def check_month_total(context, month_YYYY_MM, expected_total):
+    total_actual = context["totals"].get(month_YYYY_MM, 0)
+    assert total_actual == expected_total
+
+
 @then(parsers.parse("debe haber {expenses:d} gastos registrados"))
 def check_expenses_length(context, expenses):
     total = len(context["db"]._expenses)
     assert expenses == total
+
+
+@when(
+    parsers.parse(
+        "actualizo el importe del gasto con id {expense_id:d} a {new_amount:d} euros"
+    )
+)
+def update_expense_amount(context, expense_id, new_amount):
+    context["service"].update_expense(expense_id=expense_id, amount=new_amount)
+
+
+@when(
+    parsers.parse(
+        "añado un gasto de {amount:d} euros llamado {title} con fecha {date_str}"
+    )
+)
+def add_expense_with_date(context, amount, title, date_str):
+    year, month, day = map(int, date_str.split("-"))
+    expense_date = date(year, month, day)
+    context["service"].create_expense(
+        title=title, amount=amount, description="", expense_date=expense_date
+    )
+
+
+@when(parsers.parse("calculo los gastos totales por mes"))
+def calculate_month_totals(context):
+    context["totals"] = context["service"].total_by_month()
+
+
+@when(parsers.parse("elimino todos los gastos"))
+def remove_all_expenses(context):
+    expenses = context["service"].list_expenses()
+    for expense in expenses:
+        context["service"].remove_expense(expense.id)

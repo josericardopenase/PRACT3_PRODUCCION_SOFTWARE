@@ -14,3 +14,6 @@ wheels/
 
 # IDE
 .idea/
+
+# Local databases
+*.db
